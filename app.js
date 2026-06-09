@@ -52,10 +52,8 @@ function executarAcao(escolhaUsuario) {
     }, 300);
 }
 
-/**
- * ATENÇÃO ALUNOS: Analisem esta função! 
- * Qual é o comportamento lógico/matemático acontecendo aqui?
- */
+/* ATENÇÃO ALUNOS: Analisem esta função! 
+ * Qual é o comportamento lógico/matemático acontecendo aqui? */
 function processarRegraDeNegocio(parametroA, parametroB) {
 
     // CASO 1: Avaliação de Igualdade Absoluta
