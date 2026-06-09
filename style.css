@@ -20,7 +20,7 @@ body {
     min-height: 100vh;
 }
 
-.main-header {
+header {
     text-align: center;
     padding: 20px;
     background: linear-gradient(135deg, #1b5e20, #004313);
@@ -28,7 +28,7 @@ body {
     width: 100%;
 }
 
-.game-container {
+main {
     width: 100%;
     max-width: 550px;
     padding: 15px;
@@ -37,7 +37,6 @@ body {
     gap: 15px;
 }
 
-/* Placar Estilo Retro */
 .scoreboard {
     display: flex;
     justify-content: space-around;
@@ -120,7 +119,6 @@ body {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Marca do Pênalti e Elementos Dinâmicos */
 .penalty-spot {
     width: 100%;
     height: 120px;
@@ -128,7 +126,6 @@ body {
     margin-top: auto;
 }
 
-/* Estilização básica dos Sprites (Emojis) */
 .sprite {
     font-size: 2.8rem;
     position: absolute;
@@ -143,7 +140,7 @@ body {
     transform: translateX(-50%);
 }
 
-/* Uniforme customizado do Jogador do Brasil acima do Emoji */
+
 .uniforme-brasil {
     font-size: 0.7rem;
     position: absolute;
@@ -166,8 +163,6 @@ body {
     transition: all 0.4s ease-in-out;
     z-index: 6;
 }
-
-/* --- Estados de Animação via Injeção de Classe JS --- */
 
 /* Movimentos do Goleiro */
 .goleiro-esquerda {
@@ -276,7 +271,7 @@ body {
     cursor: pointer;
 }
 
-.main-footer {
+footer {
     margin-top: auto;
     padding: 10px;
     font-size: 0.75rem;
