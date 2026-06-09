@@ -1,0 +1,284 @@
+:root {
+    --green-pitch: #2e7d32;
+    --lines-white: #ffffff;
+    --brazil-yellow: #ffeb3b;
+    --brazil-blue: #0d47a1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #eceff1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #1b5e20, #004313);
+    color: white;
+    width: 100%;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 550px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Placar Estilo Retro */
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-bottom: 4px solid #b0bec5;
+}
+
+.score-block {
+    text-align: center;
+}
+
+.score-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #546e7a;
+    text-transform: uppercase;
+}
+
+.score-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #212121;
+}
+
+.score-divider {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #cfd8dc;
+}
+
+/* --- Campo de Futebol Interativo --- */
+.stadium {
+    background-color: var(--green-pitch);
+    background-image: linear-gradient(to bottom, #2e7d32 50%, #276b2b 50%);
+    /* Listras do gramado */
+    background-size: 100% 40px;
+    border: 5px solid var(--lines-white);
+    border-radius: 12px;
+    height: 380px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+.status-message {
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 10;
+}
+
+/* Área e Trave */
+.goal-area {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    /* Linha da grande área */
+}
+
+.trave {
+    border: 5px solid var(--lines-white);
+    border-bottom: none;
+    width: 70%;
+    height: 110px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Marca do Pênalti e Elementos Dinâmicos */
+.penalty-spot {
+    width: 100%;
+    height: 120px;
+    position: relative;
+    margin-top: auto;
+}
+
+/* Estilização básica dos Sprites (Emojis) */
+.sprite {
+    font-size: 2.8rem;
+    position: absolute;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+}
+
+/* Goleiro Posição Padrão */
+.goleiro-idle {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Uniforme customizado do Jogador do Brasil acima do Emoji */
+.uniforme-brasil {
+    font-size: 0.7rem;
+    position: absolute;
+    top: 12px;
+    left: 6px;
+    letter-spacing: -2px;
+}
+
+.jogador-idle {
+    bottom: 10px;
+    left: 35%;
+}
+
+.bola {
+    font-size: 1.8rem;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s ease-in-out;
+    z-index: 6;
+}
+
+/* --- Estados de Animação via Injeção de Classe JS --- */
+
+/* Movimentos do Goleiro */
+.goleiro-esquerda {
+    left: 15%;
+    bottom: 20px;
+    transform: rotate(-70deg);
+}
+
+.goleiro-direita {
+    left: 75%;
+    bottom: 20px;
+    transform: rotate(70deg);
+}
+
+.goleiro-centro {
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Movimentos do Jogador Chutando */
+.jogador-chutando {
+    left: 46%;
+    bottom: 15px;
+    transform: scale(1.1);
+}
+
+/* Destinos da Bola */
+.bola-esquerda {
+    bottom: 280px;
+    left: 22%;
+    font-size: 1rem;
+}
+
+.bola-centro {
+    bottom: 300px;
+    left: 50%;
+    font-size: 1rem;
+}
+
+.bola-direita {
+    bottom: 280px;
+    left: 78%;
+    font-size: 1rem;
+}
+
+/* Efeitos Visuais extras */
+.stadium.gol-festa {
+    animation: flash-green 0.3s infinite;
+}
+
+@keyframes flash-green {
+    0% {
+        background-color: #2e7d32;
+    }
+
+    50% {
+        background-color: #4caf50;
+    }
+}
+
+/* Painel de Controles */
+.controls {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.controls h2 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #37474f;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-shoot {
+    flex: 1;
+    padding: 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 2px solid #cfd8dc;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-shoot:hover {
+    background-color: #ffeb3b;
+    border-color: #fbc02d;
+}
+
+.btn-secondary {
+    background: none;
+    border: none;
+    color: #78909c;
+    font-size: 0.8rem;
+    margin-top: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.main-footer {
+    margin-top: auto;
+    padding: 10px;
+    font-size: 0.75rem;
+    color: #90a4ae;
+}

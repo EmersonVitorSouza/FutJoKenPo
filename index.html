@@ -4,17 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futebol JoKenPo</title>
+    <title>Workshop - Pensando como um Jogo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
 
+    <header class="main-header">
+        <h1>Pênaltis do Brasil: A Lógica do Jokenpô</h1>
+        <p>Workshop: Desenvolvendo Lógica de Programação Através de Decisões Interativas</p>
     </header>
-    <main>
+
+    <main class="game-container">
+
+        <section class="scoreboard" aria-label="Placar do Jogo">
+            <div class="score-block">
+                <span class="score-label">Brasil (Você)</span>
+                <span id="player-score" class="score-value">0</span>
+            </div>
+            <div class="score-divider">X</div>
+            <div class="score-block">
+                <span class="score-label">Goleiro</span>
+                <span id="cpu-score" class="score-value">0</span>
+            </div>
+        </section>
+
+        <section class="stadium" id="campo-stadium" aria-label="Campo de Jogo">
+            <div id="game-status" class="status-message">PREPARE-SE PARA O CHUTE!</div>
+
+            <div class="goal-area">
+                <div class="trave">
+                    <div id="goleiro" class="sprite goleiro-idle">🕴️</div>
+                </div>
+            </div>
+
+            <div class="penalty-spot">
+                <div id="bola" class="bola">⚽</div>
+                <div id="jogador" class="sprite jogador-idle">
+                    🏃‍♂️
+                </div>
+            </div>
+        </section>
+
+        <section class="controls" aria-label="Controles de Chute">
+            <h2>Escolha a direção do chute:</h2>
+            <div class="action-buttons">
+                <button class="btn-shoot" data-direction="esquerda">⬅️ Esquerda</button>
+                <button class="btn-shoot" data-direction="centro">⬆️ Centro</button>
+                <button class="btn-shoot" data-direction="direita">➡️ Direita</button>
+            </div>
+            <button id="btn-reset" class="btn-secondary">Reiniciar Campeonato</button>
+        </section>
 
     </main>
 
+    <footer class="main-footer">
+        <p>&copy; 2026 - Workshop de Lógica de Programação | Senac</p>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 
 </html>
